@@ -1,5 +1,9 @@
 package com.lean.repositories;
 
-public interface WorkItemRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.lean.models.WorkItem;
+
+public interface WorkItemRepository extends CrudRepository<WorkItem, Integer> {
 
 }
