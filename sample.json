@@ -1,52 +1,22 @@
 {
-	"name": "group1",
-	"process": [{
+	"backlog":[],
+	"completed":[],
+	"processes": [{
 			"name": "P1",
-			"rate": "5",
-			"backlog": [{
-					"name": "W1"
-				}, {
-					"name": "W2"
-				}, {
-					"name": "W3"
-				}, {
-					"name": "W4"
-				}, {
-					"name": "W5"
-				}, {
-					"name": "W6"
-				}, {
-					"name": "W7"
-				}, {
-					"name": "W8"
-				}, {
-					"name": "W9"
-				}, {
-					"name": "W10"
-				}, {
-					"name": "W11"
-				}, {
-					"name": "W12"
-				}, {
-					"name": "W13"
-				}, {
-					"name": "W14"
-				}, {
-					"name": "W15"
-				}
-			]
+			"capacity": "5",
+			"workItems": []
 		}, {
 			"name": "P2",
-			"rate": "3",
-			"backlog": []
+			"capacity": "3",
+			"workItems": []
 		}, {
 			"name": "P3",
-			"rate": "10",
-			"backlog": []
+			"capacity": "10",
+			"workItems": []
 		}, {
 			"name": "P4",
-			"rate": "4",
-			"backlog": []
+			"capacity": "4",
+			"workItems": []
 		}
 	]
 }

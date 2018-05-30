@@ -27,4 +27,8 @@ public class WorkItemController {
 		return workItemService.saveWorkItem(workItem);
 	}
 	
+	@PostMapping("/workItems")
+	public List<WorkItem> saveWorkItems(@RequestBody List<WorkItem> workItems) {
+		return workItemService.saveWorkItems(workItems);
+	}
 }

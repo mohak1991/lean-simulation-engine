@@ -21,5 +21,9 @@ public class WorkItemService {
 	public List<WorkItem> getAll() {
 		return (List<WorkItem>) workItemRepository.findAll();
 	}
+
+	public List<WorkItem> saveWorkItems(List<WorkItem> workItems) {
+		return (List<WorkItem>) workItemRepository.saveAll(workItems);
+	}
 }
 
