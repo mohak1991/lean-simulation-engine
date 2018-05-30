@@ -1,8 +1,11 @@
 package com.lean.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 @lombok.Getter
@@ -12,7 +15,9 @@ import javax.persistence.Id;
 public class Process {
 	@Id
 	@GeneratedValue
-	public Integer id;
-	public String name;
+	private Integer id;
+	private String name;
 	private Integer capacity;
+	@OneToMany
+	private List<WorkItem> workItems;
 }

@@ -49,5 +49,10 @@ public class ProcessGroupController {
 	public ProcessGroup addWorkItemsInGroup(@PathVariable Integer id, @RequestBody List<WorkItem> workItems) {
 		return processGroupService.addWorkItemsInGroup(id,workItems);
 	}
+	
+	@PostMapping("processGroup/{id}/execute")
+	public void execute(@PathVariable Integer id) {
+		processGroupService.execute(id);
+	}
 }
 

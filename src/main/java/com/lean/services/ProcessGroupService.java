@@ -82,4 +82,9 @@ public class ProcessGroupService {
 		}
 		return null;
 	}
+
+	public void execute(Integer id) {
+		ProcessGroup processGroup = processGroupRepository.findById(id).get();
+		processGroupRepository.save(processGroup.executeIteration());
+	}
 }

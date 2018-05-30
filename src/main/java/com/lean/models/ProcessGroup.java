@@ -1,5 +1,6 @@
 package com.lean.models;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,4 +24,34 @@ public class ProcessGroup {
 	private List<WorkItem> completed;
 	@OneToMany
 	private List<Process> processes;
+	
+	
+	public ProcessGroup executeIteration() {
+		Iterator<Process> iteratorProcesses = processes.iterator();
+		int processIteratorIndex = 0;
+		while(iteratorProcesses.hasNext()) {
+			Process currentProcess = iteratorProcesses.next();
+			
+			
+			if(processIteratorIndex == 0) {
+				for(int i=0;i<currentProcess.getCapacity();i++) {
+					if(backlog.size()>0) {
+						currentProcess.getWorkItems().add(backlog.remove(0));
+					}
+				}
+			}
+			else {
+				Process lastProcess = processes.get(processIteratorIndex - 1);
+				for(int i=0;i<currentProcess.getCapacity();i++) {
+					if(lastProcess.getWorkItems().size()>0) {
+						currentProcess.getWorkItems().add(lastProcess.getWorkItems().remove(0));
+					}
+				}
+			}
+			
+			processIteratorIndex++;
+		}
+		
+		return this;
+	}
 }
