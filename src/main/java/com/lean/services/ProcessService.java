@@ -20,4 +20,8 @@ public class ProcessService {
 	public List<Process> addAll(List<Process> processes) {
 		return (List<Process>) processRepository.saveAll(processes);
 	}
+	
+	public Process add(Process process) {
+		return processRepository.save(process);
+	}
 }
