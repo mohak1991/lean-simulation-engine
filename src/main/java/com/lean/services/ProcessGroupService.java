@@ -28,15 +28,8 @@ public class ProcessGroupService {
 		return processGroupRepository.save(processGroup);
 	}
 
-	public ProcessGroup get() {
-		List<ProcessGroup> processGroups = (List<ProcessGroup>) processGroupRepository.findAll();
-		if(processGroups.size()>0) {
-			return processGroups.get(0);
-		}
-		else {
-			return null;
-		}
-		
+	public List<ProcessGroup> getAll() {
+		return (List<ProcessGroup>) processGroupRepository.findAll();
 	}
 
 	public ProcessGroup addProcessInGroup(Integer id, Process process) {
@@ -65,7 +58,7 @@ public class ProcessGroupService {
 		if(processGroupRepository.existsById(id)) {
 			WorkItem newWorkItem = workItemRepository.save(workItem);
 			ProcessGroup existingProcessGroup = processGroupRepository.findById(id).get();
-			List<WorkItem> existingWorkItems = existingProcessGroup.getBacklog();
+			List<WorkItem> existingWorkItems = existingProcessGroup.getProcesses().get(0).getWorkItems();
 			existingWorkItems.add(newWorkItem);
 			return processGroupRepository.save(existingProcessGroup);
 		}
@@ -76,15 +69,15 @@ public class ProcessGroupService {
 		if(processGroupRepository.existsById(id)) {
 			List<WorkItem> newWorkItems = (List<WorkItem>) workItemRepository.saveAll(workItems);
 			ProcessGroup existingProcessGroup = processGroupRepository.findById(id).get();
-			List<WorkItem> existingWorkItems = existingProcessGroup.getBacklog();
+			List<WorkItem> existingWorkItems = existingProcessGroup.getProcesses().get(0).getWorkItems();
 			existingWorkItems.addAll(newWorkItems);
 			return processGroupRepository.save(existingProcessGroup);
 		}
 		return null;
 	}
 
-	public void execute(Integer id) {
+	public ProcessGroup execute(Integer id) {
 		ProcessGroup processGroup = processGroupRepository.findById(id).get();
-		processGroupRepository.save(processGroup.executeIteration());
+		return processGroupRepository.save(processGroup.executeIteration());
 	}
 }

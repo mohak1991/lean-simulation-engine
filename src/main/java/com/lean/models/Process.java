@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 @Entity
 @lombok.Getter
 @lombok.Setter
@@ -20,4 +22,9 @@ public class Process {
 	private Integer capacity;
 	@OneToMany
 	private List<WorkItem> workItems;
+	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }

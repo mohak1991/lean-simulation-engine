@@ -26,8 +26,8 @@ public class ProcessGroupController {
 	}
 	
 	@GetMapping("/processGroup")
-	public ProcessGroup get() {
-		return processGroupService.get();
+	public List<ProcessGroup> get() {
+		return processGroupService.getAll();
 	}
 	
 	@PostMapping("/processGroup/{id}/process")
@@ -51,8 +51,8 @@ public class ProcessGroupController {
 	}
 	
 	@PostMapping("processGroup/{id}/execute")
-	public void execute(@PathVariable Integer id) {
-		processGroupService.execute(id);
+	public ProcessGroup execute(@PathVariable Integer id) {
+		return processGroupService.execute(id);
 	}
 }
 
